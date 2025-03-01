@@ -34,6 +34,24 @@ for _, id in ipairs(blacklistedID) do
     end
 end
 
+-- detect if the ui exist
+task.spawn(function()
+    while task.wait(2) do
+        local HiddenGui = game:GetService("CoreGui"):FindFirstChildWhichIsA("Folder", true)
+        local DeltaGui = game:GetService("CoreGui"):FindFirstChildWhichIsA("ScreenGui", true)
+
+        if not HiddenGui or HiddenGui.Name ~= "HiddenGui" then
+            game:GetService("Players"):Kick("UI HAS BEEN NOT FOUND PLEASE REJOIN AGAIN")
+            break
+        end
+
+        if not DeltaGui or DeltaGui.Name ~= "Delta" then
+            game:GetService("Players"):Kick("UI HAS BEEN NOT FOUND PLEASE REJOIN AGAIN")
+            break
+        end
+    end
+end)
+
 -- roblox broke shit remotely again
 local execnn, execvv = identifyexecutor();
 
