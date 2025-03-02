@@ -31,6 +31,7 @@ TextBox.MultiLine = true
 TextBox.Text = ""
 TextBox.TextColor3 = Color3.fromRGB(186, 186, 186)
 TextBox.TextSize = 14.000
+TextBox.TextWrapped = true
 TextBox.TextXAlignment = Enum.TextXAlignment.Left
 TextBox.TextYAlignment = Enum.TextYAlignment.Top
 
