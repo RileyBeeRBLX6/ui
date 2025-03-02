@@ -54,6 +54,7 @@ end)
 
 -- roblox broke shit remotely again
 local execnn, execvv = identifyexecutor();
+getgenv().getscriptclosure = nil
 
 if execvv ~= "1.3.658.460" and execvv ~= "1.4.658.460" then
 getgenv().getcallbackvalue = nil
@@ -69,6 +70,21 @@ getgenv().getrunningscripts = newcclosure(function()
 
 	return scripts;
 end)
+end
+
+-- getscriptclosure function
+local function safeGetScriptClosure(scriptInstance)
+    if typeof(getscriptclosure) == "function" then
+        local success, result = pcall(getscriptclosure, scriptInstance)
+        if success then
+            return result
+        else
+            warn("getscriptclosure failed:", result)
+        end
+    else
+        warn("getscriptclosure is not available")
+    end
+    return nil
 end
 
 local safe_request = safe_request and safe_request or request;
